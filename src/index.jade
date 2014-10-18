@@ -12,55 +12,148 @@ html
     article
 
       section
-        h1 Testing Your Wordpress
+        h1 Testing for Websites and Plugins
+        h2
+          a(href='http://twitter.com/jackbarker') @jackbarker
+        h3 Presented @ #WPMelb (October 2014)
 
       section
-        h2 Keyboard Interaction
-        h3 Powered by <a href="https://github.com/markdalgleish/bespoke-keys">bespoke-keys</a>
-
-      section
-        h2 Touch Interaction
-        h3 Powered by <a href="https://github.com/markdalgleish/bespoke-touch">bespoke-touch</a>
-
-      section
-        h2 Responsive Slides
-        h3 Powered by <a href="https://github.com/markdalgleish/bespoke-scale">bespoke-scale</a>
-
-      section
-        h2 Bullet List
-        h3.bullet Powered by <a href="https://github.com/markdalgleish/bespoke-bullets">bespoke-bullets</a>
+        h2.bullet Agenda
         ul
-          li Bullet 1
-          li Bullet 2
-          li Bullet 3
+          li Testing 101 (What / Why)
+          li Testing for <b>Beginners</b> with Selenium (Browser Automation)
+          li Testing for <b>Developers</b> with PHPUnit and WP Testing Framework
 
       section
-        h2 Syntax Highlighting
-        h3 Powered by <a href="http://twitter.com/LeaVerou">Lea Verou</a>'s <a href="https://github.com/LeaVerou/prism">Prism</a>
-        pre
-          code.language-javascript.
-            bespoke.from('article', [
-              classes(),
-              keys(),
-              touch(),
-              bullets('li, .bullet')
-            ]);
+        h2 Testing : 101
+
+      section
+        h2 A Test is:
+        ul
+          li An <b>Instruction</b> with an <b>Expected Outcome</b>, that shall be compared against an <b>Actual Outcome</b>.
+          li IF (Expected == Actual), the test shall <b>PASS</b>.
+          li IF (Expected <> Actual), the test shall <b>FAIL</b>.
+          li A test must be <b>repeatable</b>.
+          li Where possible, each test should focus on a single item of functionality.
+
+      section
+        h2 Your website/product's automated test suite should:
+        ul
+          li Provide a good description of the functionality your system is intends to deliver.
+          li Alert you if you break something.
+          li Assist you in checking whether you have fixed something.
+          li Improve the quality of your work.
+          li Allow you (and/or others) to have a greater confidence in the system, and in proposed changes.
+          li Recieve updates/maintenance inline with changes to the codebase 
 
       section(data-bespoke-state='emphatic')
-        h2 Emphatic Slide!
-        h3 Powered by <a href="https://github.com/markdalgleish/bespoke-state">bespoke-state</a>
+        h2 Browser Automation with Selenium IDE
+        h3 or, <b>"Testing for Beginners"</b>
 
       section
-        h2.bullet Just the beginning...
-        br
+        h2 Selenium IDE
+        h3 (What <b>IS</b> it?)
         ul
-          li Edit <a href="http://jade-lang.com/">Jade</a> markup in <em>'src/index.jade'</em>
-          li Edit <a href="http://learnboost.github.io/stylus/">Stylus</a> styles in <em>'src/styles/main.styl'</em>
-          li Edit JavaScript in <em>'src/scripts/main.js'</em>
-        br
+          li It is a <b>Browser Automation Tool</b>.
+          li Installed as a Firefox Browser Plugin.
+          li Alternatively: Chrome, Safari, IE, Opera (note: these versions are built/maintained by 3rd parties).
+      
+      section
+        h2 Selenium IDE
+        h3 (What does it <b>DO</b>?)
         ul
-          li
-            strong Enjoy! :)
-            a(href='http://twitter.com/markdalgleish')  -@markdalgleish
+          li Allows you to <b>record</b> or <b>write</b> scripts, and then <b>replay</b> the script in the browser.
+          li Because it's browser based, you can record/replay on any website.
+          li It includes a testing framework.
+          li It's FREE to use, and licensed under 
+            a(href='http://www.apache.org/licenses/LICENSE-2.0') Apache 2.0.
 
+      section
+        h2 Getting started
+        h3 Installing Selenium IDE
+        ol
+          li Make sure you have <b>Firefox</b> installed.
+          li Grab <b>Selenium IDE Firefox Plugin</b> at:
+            a(href='http://www.seleniumhq.org/download')  SeleniumHQ.org/download
+        ul
+          li (Note - for our purposes, ignore "Selenium Server" and other products)
+        img(alt='SeleniumHQ Downloads' src='/images/selenium-download.jpg' height='700px' width='500px')
+
+      section
+        h2 Using Selenium
+        h3 Worked Example:
+          a(href='http://wherethetruck.at')  WhereTheTruck.at
+          MapPicker
+
+      section
+        h2 Let's create a test for the following:
+        h3 Test 1
+        p
+          b  Instruction:
+          span  Select a city from the MapPicker
+        p
+          b  Expected behaviour:
+          span  The map should be updated, to reflect the city you have selected.
+
+      section
+        h2 (Insert video)
+
+      section
+        h2 Saved Tests
+        h3 Note tests are saved in an XML format:
+        pre
+          code.language-javascript.
+            &lt;!DOCTYPE html&gt;
+            &lt;html&gt;
+              &lt;head profile=&quot;http://selenium-ide.openqa.org/profiles/test-case&quot;&gt;
+              &lt;link rel=&quot;selenium.base&quot; href=&quot;http://wherethetruck.at/&quot; /&gt;
+            &lt;/head&gt;
+            &lt;body&gt;
+              &lt;table&gt;&lt;tbody&gt;
+                &lt;!--Open homepage--&gt;
+                &lt;tr&gt;
+                  &lt;td&gt;open&lt;/td&gt; &lt;!-- Command --&gt;
+                  &lt;td&gt;/&lt;/td&gt;    &lt;!-- Arg 1 --&gt;
+                  &lt;td&gt;&lt;/td&gt;   &lt;!-- Arg 2 --&gt;
+                &lt;/tr&gt;
+                &lt;!--Click Mapselector, and select &quot;Melbourne&quot;--&gt;
+                &lt;tr&gt;
+                  &lt;td&gt;click&lt;/td&gt;
+                  &lt;td&gt;id=mapselector-dd&lt;/td&gt;
+                  &lt;td&gt;&lt;/td&gt;
+                &lt;/tr&gt;
+                &lt;tr&gt;
+                  &lt;td&gt;clickAndWait&lt;/td&gt;
+                  &lt;td&gt;link=Melbourne&lt;/td&gt;
+                  &lt;td&gt;&lt;/td&gt;
+                &lt;/tr&gt;
+                &lt;!--Expected: &quot;Melbourne&quot; is selected--&gt;
+                &lt;tr&gt;
+                  &lt;td&gt;assertText&lt;/td&gt;
+                  &lt;td&gt;css=#mapselector-dd &amp;gt; span&lt;/td&gt;
+                  &lt;td&gt;exact:City: Melbourne&lt;/td&gt;
+                &lt;/tr&gt;
+              &lt;/tbody&gt;&lt;/table&gt;
+            &lt;/body&gt;&lt;/html&gt;
+
+
+      section
+        h2 Let's try a harder one:
+        h3 Test 2
+        p
+          b  Instruction:
+          span  Reload the page
+        p
+          b  Expected behaviour:
+          span  The page should "remember" which city you were viewing earlier, and display the same city
+
+      section
+        h2 (Insert video)
+
+      section
+        h2 Other uses for Selenium
+
+    footer
+      p
+      a(href='http://twitter.com/jackbarker') @jackbarker
     script(src='build/build.js')
