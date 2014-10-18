@@ -108,11 +108,11 @@ html
 
       section
         div(class='img_wrapper')
-          img(alt='Test 1' src='/images/selenium-test1.png')
+          img(alt='Test 1' src='/images/selenium-test1.jpg')
 
       section
         h2 Saved Tests
-        p Note tests are saved in an HTML format:
+        p Note: Tests are saved in an HTML format:
         pre
           code.language-markup.
             &lt;!DOCTYPE html&gt;
@@ -163,11 +163,15 @@ html
         h2 (Insert video)
 
       section
-        h2 Other uses for Selenium IDE
-
-      section
         h2 Limitations of Selenium IDE
-
+        p
+          em  Selenium IDE is a very powerful tool for browser automation, and can be used any number of tasks (not just testing). <br /> That said, it does have some limitations.
+        ol
+          li Is your UI likely to undergo changes? If so, rework to your testing will likely be significant.
+          li How complex are the items you are seeking to test? In some cases you may be limited in what the tool allows you to do (e.g. Test that "on Tuesdays, a different banner is displayed")
+          li Some testing simply needs to be done manually
+          li Selenium's developers describe:
+            blockquote Selenium IDE is simply intended as a rapid prototyping tool... <br /> ...for serious, robust test automation either Selenium 2 or Selenium 1." -- SeleniumHQ.org
 
     footer
         a(href='http://twitter.com/jackbarker')
