@@ -5,60 +5,162 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>Testing Your Wordpress</title>
     <link rel="stylesheet" type="text/css" href="build/build.css">
+    <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
   </head>
   <body>
     <article>
       <section>
-        <h1>Testing Your Wordpress</h1>
+        <h1>Testing for Websites and Plugins</h1>
+        <h2><a href="http://twitter.com/jackbarker">@jackbarker</a></h2>
+        <h3>Presented @ #WPMelb (October 2014)</h3>
       </section>
       <section>
-        <h2>Keyboard Interaction</h2>
-        <h3>Powered by <a href="https://github.com/markdalgleish/bespoke-keys">bespoke-keys</a></h3>
-      </section>
-      <section>
-        <h2>Touch Interaction</h2>
-        <h3>Powered by <a href="https://github.com/markdalgleish/bespoke-touch">bespoke-touch</a></h3>
-      </section>
-      <section>
-        <h2>Responsive Slides</h2>
-        <h3>Powered by <a href="https://github.com/markdalgleish/bespoke-scale">bespoke-scale</a></h3>
-      </section>
-      <section>
-        <h2>Bullet List</h2>
-        <h3 class="bullet">Powered by <a href="https://github.com/markdalgleish/bespoke-bullets">bespoke-bullets</a></h3>
+        <h2 class="bullet">Agenda</h2>
         <ul>
-          <li>Bullet 1</li>
-          <li>Bullet 2</li>
-          <li>Bullet 3</li>
+          <li>Testing 101 (What / Why)</li>
+          <li>Testing for <b>Beginners</b> with Selenium (Browser Automation)</li>
+          <li>Testing for <b>Developers</b> with PHPUnit and WP Testing Framework</li>
         </ul>
       </section>
       <section>
-        <h2>Syntax Highlighting</h2>
-        <h3>Powered by <a href="http://twitter.com/LeaVerou">Lea Verou</a>'s <a href="https://github.com/LeaVerou/prism">Prism</a></h3>
-        <pre><code class="language-javascript">bespoke.from('article', [
-  classes(),
-  keys(),
-  touch(),
-  bullets('li, .bullet')
-]);
-</code></pre>
+        <h2>Testing : 101</h2>
+      </section>
+      <section>
+        <h2>A Test is:</h2>
+        <ul>
+          <li>An <b>Instruction</b> with an <b>Expected Outcome</b>, that shall be compared against an <b>Actual Outcome</b>.</li>
+          <li>IF (Expected == Actual), the test shall <b>PASS</b>.</li>
+          <li>IF (Expected <> Actual), the test shall <b>FAIL</b>.</li>
+          <li>A test must be <b>repeatable</b>.</li>
+          <li>Where possible, each test should focus on a single item of functionality.</li>
+        </ul>
+      </section>
+      <section>
+        <h2>Your website/product's automated test suite should:</h2>
+        <ul>
+          <li>Provide a good description of the functionality your system is intends to deliver.</li>
+          <li>Alert you if you break something.</li>
+          <li>Assist you in checking whether you have fixed something.</li>
+          <li>Improve the quality of your work.</li>
+          <li>Allow you (and/or others) to have a greater confidence in the system, and in proposed changes.</li>
+          <li>Recieve updates/maintenance inline with changes to the codebase </li>
+        </ul>
       </section>
       <section data-bespoke-state="emphatic">
-        <h2>Emphatic Slide!</h2>
-        <h3>Powered by <a href="https://github.com/markdalgleish/bespoke-state">bespoke-state</a></h3>
+        <h2>Browser Automation with Selenium IDE</h2>
+        <h3>or, <b>"Testing for Beginners"</b></h3>
       </section>
       <section>
-        <h2 class="bullet">Just the beginning...</h2><br>
+        <h2>Selenium IDE</h2>
+        <h3>(What <b>IS</b> it?)</h3>
         <ul>
-          <li>Edit <a href="http://jade-lang.com/">Jade</a> markup in <em>'src/index.jade'</em></li>
-          <li>Edit <a href="http://learnboost.github.io/stylus/">Stylus</a> styles in <em>'src/styles/main.styl'</em></li>
-          <li>Edit JavaScript in <em>'src/scripts/main.js'</em></li>
-        </ul><br>
-        <ul>
-          <li><strong>Enjoy! :)</strong><a href="http://twitter.com/markdalgleish"> -@markdalgleish</a></li>
+          <li>It is a <b>Browser Automation Tool</b>.</li>
+          <li>Installed as a Firefox Browser Plugin.</li>
+          <li>Alternatively: Chrome, Safari, IE, Opera (note: these versions are built/maintained by 3rd parties).</li>
         </ul>
       </section>
+      <section>
+        <h2>Selenium IDE</h2>
+        <h3>(What does it <b>DO</b>?)</h3>
+        <ul>
+          <li>Allows you to <b>record</b> or <b>write</b> scripts, and then <b>replay</b> the script in the browser.</li>
+          <li>Because it's browser based, you can record/replay on any website.</li>
+          <li>It includes a testing framework.</li>
+          <li>It's FREE to use, and licensed under <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0.</a></li>
+        </ul>
+      </section>
+      <section>
+        <h2>Getting started</h2>
+        <h3>Installing Selenium IDE</h3>
+        <ol>
+          <li>Make sure you have <b>Firefox</b> installed.</li>
+          <li>Grab <b>Selenium IDE Firefox Plugin</b> at:<a href="http://www.seleniumhq.org/download"> SeleniumHQ.org/download</a></li>
+          <li class="no-num">(Note - for our purposes, ignore "Selenium Server" and other products)</li>
+        </ol>
+      </section>
+      <section>
+        <div class="img_wrapper"><img alt="SeleniumHQ Downloads" src="/images/selenium-download.jpg"></div>
+      </section>
+      <section>
+        <h2>Using Selenium</h2>
+        <h3>Worked Example for<a href="http://wherethetruck.at"> WhereTheTruck.at</a>
+          <MapPicker></MapPicker><br><br><br>
+        </h3>
+        <h4>Source Code available here:<a href="https://github.com/jibbius/testing-your-wordpress/tree/master/worked-examples/selenium_WhereTheTruckAt"> Selenium Test Files</a></h4>
+      </section>
+      <section>
+        <h2>Let's create a test for the following:</h2>
+        <h3>Test 1</h3>
+        <p><b> Instruction:</b><span> Select a city from the MapPicker</span></p>
+        <p><b> Expected behaviour:</b><span> The map should be updated, to reflect the city you have selected.</span></p>
+      </section>
+      <section>
+        <h2>(Insert video)</h2>
+      </section>
+      <section>
+        <div class="img_wrapper"><img alt="Test 1" src="/images/selenium-test1.jpg"></div>
+      </section>
+      <section>
+        <h2>Saved Tests</h2>
+        <p>Note: Tests are saved in an HTML format:</p>
+        <pre><code class="language-markup">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head profile=&quot;http://selenium-ide.openqa.org/profiles/test-case&quot;&gt;
+  &lt;link rel=&quot;selenium.base&quot; href=&quot;http://wherethetruck.at/&quot; /&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;table&gt;&lt;tbody&gt;
+    &lt;!--Open homepage--&gt;
+    &lt;tr&gt;
+      &lt;td&gt;open&lt;/td&gt; &lt;!-- Command --&gt;
+      &lt;td&gt;/&lt;/td&gt;    &lt;!-- Arg 1 --&gt;
+      &lt;td&gt;&lt;/td&gt;   &lt;!-- Arg 2 --&gt;
+    &lt;/tr&gt;
+    &lt;!--Click Mapselector, and select &quot;Melbourne&quot;--&gt;
+    &lt;tr&gt;
+      &lt;td&gt;click&lt;/td&gt;
+      &lt;td&gt;id=mapselector-dd&lt;/td&gt;
+      &lt;td&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;clickAndWait&lt;/td&gt;
+      &lt;td&gt;link=Melbourne&lt;/td&gt;
+      &lt;td&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;!--Expected: &quot;Melbourne&quot; is selected--&gt;
+    &lt;tr&gt;
+      &lt;td&gt;assertText&lt;/td&gt;
+      &lt;td&gt;css=#mapselector-dd &amp;gt; span&lt;/td&gt;
+      &lt;td&gt;exact:City: Melbourne&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;&lt;/table&gt;
+&lt;/body&gt;&lt;/html&gt;
+
+</code></pre>
+      </section>
+      <section>
+        <h2>Let's try a harder one:</h2>
+        <h3>Test 2</h3>
+        <p><b> Instruction:</b><span> Reload the page</span></p>
+        <p><b> Expected behaviour:</b><span> The page should "remember" which city you were viewing earlier, and display the same city</span></p>
+      </section>
+      <section>
+        <h2>(Insert video)</h2>
+      </section>
+      <section>
+        <h2>Limitations of Selenium IDE</h2>
+        <p><em> Selenium IDE is a very powerful tool for browser automation, and can be used any number of tasks (not just testing). <br /> That said, it does have some limitations.</em></p>
+        <ol>
+          <li>Is your UI likely to undergo changes? If so, rework to your testing will likely be significant.</li>
+          <li>How complex are the items you are seeking to test? In some cases you may be limited in what the tool allows you to do (e.g. Test that "on Tuesdays, a different banner is displayed")</li>
+          <li>Some testing simply needs to be done manually</li>
+          <li>Selenium's developers describe:
+            <blockquote>Selenium IDE is simply intended as a rapid prototyping tool... <br /> ...for serious, robust test automation either Selenium 2 or Selenium 1." -- SeleniumHQ.org</blockquote>
+          </li>
+        </ol>
+      </section>
     </article>
+    <footer><a href="http://twitter.com/jackbarker"><span> @jackbarker</span></a><a href="http://twitter.com/jackbarker"><i class="fa fa-twitter fa-lg"></i></a><a href="http://github.com/jibbius"><i class="fa fa-github fa-lg"></i></a><a href="http://wherethetruck.at/jackb"><i class="fa fa-globe fa-lg"></i></a></footer>
     <script src="build/build.js"></script>
   </body>
 </html>
