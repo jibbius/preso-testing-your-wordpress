@@ -75,9 +75,11 @@ html
           li Make sure you have <b>Firefox</b> installed.
           li Grab <b>Selenium IDE Firefox Plugin</b> at:
             a(href='http://www.seleniumhq.org/download')  SeleniumHQ.org/download
-        ul
-          li (Note - for our purposes, ignore "Selenium Server" and other products)
-        img(alt='SeleniumHQ Downloads' src='/images/selenium-download.jpg' height='700px' width='500px')
+          li.no-num (Note - for our purposes, ignore "Selenium Server" and other products)
+
+      section
+        div(class='img_wrapper')
+          img(alt='SeleniumHQ Downloads' src='/images/selenium-download.jpg')
 
       section
         h2 Using Selenium
@@ -99,10 +101,14 @@ html
         h2 (Insert video)
 
       section
+        div(class='img_wrapper')
+          img(alt='Test 1' src='/images/selenium-test1.png')
+
+      section
         h2 Saved Tests
-        h3 Note tests are saved in an XML format:
+        p Note tests are saved in an HTML format:
         pre
-          code.language-javascript.
+          code.language-markup.
             &lt;!DOCTYPE html&gt;
             &lt;html&gt;
               &lt;head profile=&quot;http://selenium-ide.openqa.org/profiles/test-case&quot;&gt;

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://wherethetruck.at/" />
+<title>New Test</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">New Test</td></tr>
+</thead><tbody>
+<!--Delete all visible cookies (at this domain)-->
+<tr>
+	<td>open</td>
+	<td>/</td>
+	<td></td>
+</tr>
+<tr>
+	<td>deleteAllVisibleCookies</td>
+	<td></td>
+	<td></td>
+</tr>
+<!---->
+<!--Confirm that there is no "map" cookie (anymore)-->
+<tr>
+	<td>assertCookieNotPresent</td>
+	<td>map</td>
+	<td></td>
+</tr>
+<!--** This isn't really required - because it's testing Selenium, not the web app.-->
+<!--** That said, in this case it takes very little effort - and is relevant to the below.-->
+<!---->
+<!--Select Perth-->
+<tr>
+	<td>click</td>
+	<td>id=dd</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Perth</td>
+	<td></td>
+</tr>
+<!--Expected: "Perth" is selected-->
+<tr>
+	<td>assertText</td>
+	<td>css=#dd &gt; span</td>
+	<td>exact:City: Perth</td>
+</tr>
+<!--Expected: "Perth" is stored as within the cookie "Map".-->
+<tr>
+	<td>assertCookieByName</td>
+	<td>map</td>
+	<td>Perth</td>
+</tr>
+<!--Reload Page-->
+<tr>
+	<td>open</td>
+	<td>/</td>
+	<td></td>
+</tr>
+<!--Expected: "Perth" is selected-->
+<tr>
+	<td>assertText</td>
+	<td>css=#dd &gt; span</td>
+	<td>exact:City: Perth</td>
+</tr>
+</tbody></table>
+</body>
+</html>
