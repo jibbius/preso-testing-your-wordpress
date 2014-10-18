@@ -6,6 +6,7 @@ html
     title Testing Your Wordpress
 
     link(rel='stylesheet', type='text/css', href='build/build.css')
+    link(rel='stylesheet', type='text/css', href='//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css')
 
   body
 
@@ -83,9 +84,14 @@ html
 
       section
         h2 Using Selenium
-        h3 Worked Example:
+        h3 Worked Example for
           a(href='http://wherethetruck.at')  WhereTheTruck.at
           MapPicker
+          br
+          br
+          br
+        h4 Source Code available here:
+          a(href='https://github.com/jibbius/testing-your-wordpress/tree/master/worked-examples/selenium_WhereTheTruckAt')  Selenium Test Files
 
       section
         h2 Let's create a test for the following:
@@ -157,9 +163,20 @@ html
         h2 (Insert video)
 
       section
-        h2 Other uses for Selenium
+        h2 Other uses for Selenium IDE
+
+      section
+        h2 Limitations of Selenium IDE
+
 
     footer
-      p
-      a(href='http://twitter.com/jackbarker') @jackbarker
+        a(href='http://twitter.com/jackbarker')
+          span  @jackbarker
+        a(href='http://twitter.com/jackbarker')
+          i(class='fa fa-twitter fa-lg')
+        a(href='http://github.com/jibbius') 
+          i(class='fa fa-github fa-lg')
+        a(href='http://wherethetruck.at/jackb') 
+          i(class='fa fa-globe fa-lg')
+
     script(src='build/build.js')
