@@ -30,8 +30,8 @@ footer a{
 pre {
 	max-width:100%;
 }
-code[class*="language-"], pre[class*="language-"] {
-	font-size:.6em;
+pre[class*="language-"].small-text, pre[class*="language-"].small-text>code {
+	font-size:.7em;
 	line-height: 0.7 !important;
 }
 .img_wrapper{
@@ -49,4 +49,35 @@ li.no-num {
 }
 footer>a>i.fa {
     margin-left: 4px;
+}
+abbr[title] {
+	cursor: help;
+	border-bottom: 1px dotted;
+	font-weight: 700;
+	padding-left: 2px;
+	padding-right: 2px;
+}
+table {
+	font-size: .7em;
+}
+table tr:nth-child(even) td {
+    background-color: #eee;
+}
+table tr:nth-child(odd) td {
+    background-color: #fff;
+}
+table th {
+    color: white;
+    background-color: black;
+}
+table tr th.no-fill, table tr td.no-fill {
+    background: none !important;
+    color: #236BE6 !important;
+    font-size: .8em;
+    text-align: left;
+    padding-left: 2px;
+    font-style: italic;
+}
+.uppercase{
+    text-transform: uppercase;
 }

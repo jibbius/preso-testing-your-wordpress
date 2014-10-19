@@ -15,7 +15,7 @@ html
       section
         h1 Testing for Websites and Plugins
         h2
-          a(href='http://twitter.com/jackbarker') @jackbarker
+          a(href='http://twitter.com/jackbarker' target='_blank') @jackbarker
         h3 Presented @ #WPMelb (October 2014)
 
       section
@@ -36,6 +36,41 @@ html
           li IF (Expected <> Actual), the test shall <b>FAIL</b>.
           li A test must be <b>repeatable</b>.
           li Where possible, each test should focus on a single item of functionality.
+
+      section
+        h2 What a test looks like:
+        p In Selenium IDE (which we'll explore shortly), a test might look like this:
+
+        table(class='selenium')
+          colgroup
+            col(width="20%")
+            col(width="30%")
+            col(width="25%")
+            col(width="25%")
+          tbody
+            tr
+              th Command
+              th Target
+              th Value
+              th.no-fill Explanation
+            tr
+              td AssertElementExists
+              td css=body #my-form input#firstname
+              td
+              td.no-fill This test expects that an input with id "firstname" exists
+            tr
+              td AssertText
+              td css=body #my-form label.firstname
+              td Enter your first name:
+              td.no-fill This test expects that a label with class "firstname" exists, and with text "Enter your first name:"
+        
+      section
+        h2 What a test looks like:
+        p In PHPUnit, a test may look like this:
+        pre
+          code.language-javascript.
+            // Test that the sky's colour is blue
+            $testResult = assertEquals('blue', $sky->color);
 
       section
         h2 Your website/product's automated test suite should:
@@ -67,7 +102,7 @@ html
           li Because it's browser based, you can record/replay on any website.
           li It includes a testing framework.
           li It's FREE to use, and licensed under 
-            a(href='http://www.apache.org/licenses/LICENSE-2.0') Apache 2.0.
+            a(href='http://www.apache.org/licenses/LICENSE-2.0' target='_blank') Apache 2.0.
 
       section
         h2 Getting started
@@ -75,7 +110,7 @@ html
         ol
           li Make sure you have <b>Firefox</b> installed.
           li Grab <b>Selenium IDE Firefox Plugin</b> at:
-            a(href='http://www.seleniumhq.org/download')  SeleniumHQ.org/download
+            a(href='http://www.seleniumhq.org/download' target='_blank')  SeleniumHQ.org/download
           li.no-num (Note - for our purposes, ignore "Selenium Server" and other products)
 
       section
@@ -85,13 +120,13 @@ html
       section
         h2 Using Selenium
         h3 Worked Example for
-          a(href='http://wherethetruck.at')  WhereTheTruck.at
+          a(href='http://wherethetruck.at' target='_blank')  WhereTheTruck.at
           MapPicker
           br
           br
           br
         h4 Source Code available here:
-          a(href='https://github.com/jibbius/testing-your-wordpress/tree/master/worked-examples/selenium_WhereTheTruckAt')  Selenium Test Files
+          a(href='https://github.com/jibbius/testing-your-wordpress/tree/master/worked-examples/selenium_WhereTheTruckAt' target='_blank')  Selenium Test Files
 
       section
         h2 Let's create a test for the following:
@@ -108,12 +143,16 @@ html
 
       section
         div(class='img_wrapper')
+          img(alt='Test 1' src='images/selenium-annotations.jpg')
+
+      section
+        div(class='img_wrapper')
           img(alt='Test 1' src='images/selenium-test1.jpg')
 
       section
         h2 Saved Tests
         p Note: Tests are saved in an HTML format:
-        pre
+        pre.small-text
           code.language-markup.
             &lt;!DOCTYPE html&gt;
             &lt;html&gt;
@@ -164,23 +203,252 @@ html
 
       section
         h2 Limitations of Selenium IDE
+        ul
+          li Selenium IDE is a very powerful tool for browser automation.
+          li It can be used any number of tasks (not just testing).
+          li That said, it does have some limitations.
         p
-          em  Selenium IDE is a very powerful tool for browser automation, and can be used any number of tasks (not just testing). <br /> That said, it does have some limitations.
         ol
           li Is your UI likely to undergo changes? If so, rework to your testing will likely be significant.
           li How complex are the items you are seeking to test? In some cases you may be limited in what the tool allows you to do (e.g. Test that "on Tuesdays, a different banner is displayed")
           li Some testing simply needs to be done manually
-          li Selenium's developers describe:
-            blockquote Selenium IDE is simply intended as a rapid prototyping tool... <br /> ...for serious, robust test automation either Selenium 2 or Selenium 1." -- SeleniumHQ.org
+
+      section
+        h2 Limitations of Selenium IDE  
+        ol        
+          li(value='4') Great for testing something that already works (but not a great option for <abbr title="Test Driven Development">TDD</abbr>).
+          li Selenium's developers cite:
+            blockquote(cite='http://seleniumhq.org') "Selenium IDE is simply intended as a <b>rapid prototyping tool</b>... <br /> ...for serious, robust test automation use either Selenium 2 or Selenium 1." -- SeleniumHQ.org
+          li Whilst highly flexible, and easy for beginners, there are more precise tools (targetted at developers) that may provide a more reliable solution. Speaking of which...
+
+      section
+        p Enter:
+        h2 PHPUnit
+        h3 The PHP Testing Framework
+
+      section
+        h2 PHPUnit
+
+      section
+        h2 Installing PHPUnit
+        ul
+          li Instalation of PHPUnit via PEAR is <b>no longer supported</b>.
+          li Instead install via
+            a(title='PHP Archive' href='https://phpunit.de/manual/current/en/installation.html#installation.phar')  PHAR
+            span , or via
+            a(title='PHP Composer' href='https://phpunit.de/manual/current/en/installation.html#installation.composer')  Composer
+            span .
+          li Or (my preferred) check out:
+            a(title='Varying Vagrant Vagrants' href='https://github.com/Varying-Vagrant-Vagrants/VVV')  VVV
+            span .
+          li
+            em VVV is a Vagrant build, run inside VirtualBox.
+
+      section
+        h2 PHPUnit Basics
+        p  PHPUnit is started from the command line, using:
+        pre
+          code.language-markup.
+           $ phpunit
+        ul
+          li Note: When you run PHPUnit, there is <b>no webserver</b>.
+          li Note: <u>When you run PHPUnit, there is <b>no webserver</b></u>.
+          li Note:
+            span.uppercase  <u>When you run PHPUnit, <br/> there is <b>no webserver</b></u>.
+
+      section
+        h2 Sample Output:
+        h4 10 tests:
+        pre.small-text
+          code.language-markup.
+            $ phpunit
+            PHPUnit 4.2.0 by Sebastian Bergmann.
+            
+            ..........
+            
+            Time: 200 ms, Memory: 2.50Mb
+            OK (10 tests, 18 assertions)
+
+        h4 2 failures:
+        pre.small-text
+          code.language-markup.
+            $ phpunit
+            PHPUnit 4.2.0 by Sebastian Bergmann.
+            
+            ..F....F...
+            
+            Time: 200 ms, Memory: 2.50Mb
+            FAILURES!
+            Tests: 10, Assertions: 18, Failures: 2.
+      
+      section
+        h2 Coding for PHPUnit
+        ul
+          li PHPUnit declares the <b>PHPUnit_Framework_TestCase</b> class.
+          li Wordpress's testing framework declares the <b>WP_UnitTestCase</b> class (which extends PHPUnit_Framework_TestCase).
+          li When writing tests for your Wordpress plugins, you will <b>extend WP_UnitTestCase</b>, with <b>your own unique class/es</b>.
+          li
+            pre
+              code.language-javascript.
+                &lt;?php
+                  class MyPlugin_Test extends WP_UnitTestCase {
+                    // Write your test logic here...
+
+      section
+        h2 What about PHPUnit?
+        h3 PHPUnit_Framework_TestCases
+        ul
+          li PHPUnit_Framework_TestCase provides you with a number of
+            a(href='https://phpunit.de/manual/current/en/appendixes.assertions.html' target='_blank')  Assertion
+            span  functions.
+          li
+            b  These functions include:
+            span.
+              <br/> assertEquals($expected, $actual);
+              <br/> assertTrue();
+              <br/> assertFalse();
+              <br/> assertArrayHasKey();
+              <br/> assertEmpty();
+              <br/> assertFileExists();
+          li (and more)
+
+       section
+        h2 Example Use
+        h3 PHPUnit_Framework_TestCase Assertions
+        ul
+          li
+            pre
+              code.language-javascript.
+                &lt;?php
+                  class MyPlugin_Test extends WP_UnitTestCase {
+                    // Perform some logic
+                    $value = 1 + 1;
+                    // We expect the $value to equal '2'.
+                    $this->assertEquals(2, $value);
+          li Additional documentation:
+            a(href='https://phpunit.de/manual/current/en/appendixes.assertions.html' target='_blank')  PHPUnit Manual &gt; Assertions
+
+      section
+        h2 What about WP_UnitTestCase?
+        ul
+          li  For testing of WordPress plugins/themes/core, you must download the Wordpress Developer Environment ( <a href='http://develop.svn.wordpress.org/trunk/' target='_blank'>http://develop.svn.wordpress.org/trunk/</a> ).
+          li  This includes the WP_UnitTestCase class, in addition to the WordPress Core tasks, and WordPress development build.
+          li  If you're using VVV, then you will already have the Wordpress Developer Environment and PHPUnit.
+
+      section
+        h2 What do I inherit from WP_UnitTestCase?
+        h3 I will explained these items further in my next slides:
+        ul
+          li
+            b Factories
+          li <b>setUp()</b> and <b>tearDown()</b> functions
+
+      section
+        h2 Factories
+        ul
+          li  WP_UnitTestCase provides you with a number of "factories"
+          li  These factories allow you to create new Posts / Comments / Users / ...etc, with a minimal amount of code.
+
+       section
+        h2 WP_UnitTestCase functions
+        ul
+          li
+            b setUp()
+          li  This function is...
+          li
+            b tearDown()
+          li  This function is...
+
+      section
+        h2 "Gotchas"
+        h3 Just some things to watch out for -
+        ul
+          li When you run PHPUnit, there is <b>no webserver</b>
+          li <b>PHP caching</b> <br /> There are functions in PHP that explicity cache data. If you use [xyz] in a test. Make sure you [abc] in your tearDown(), or at the end of your test.
+          li <b>Database</b>. The database attached to WP Developer Environment (i.e. specified in wp-devel/wp-config.php), will be "nuked" every time you run 'phpunit'. Be careful.
+
+      section
+        h2 Tying it all together
+        h3 Building your first plugin, using PHPUnit and TDD.
+        
+      section
+        span
+          b  Recommended Directory structure
+        div(class='img_wrapper')
+          img(alt='Directory Structure' src='images/PHP_dir_structure.jpg')
+
+      section
+        ol
+          li
+            b In the root of my (VVV) working directory, I have:
+        ul
+          li  The git repo for ALL my plugin's files
+        br
+        ol
+          li(value='2')
+            b This repo/folder has:
+        ul
+          li a subfolder for my tests
+          li a subfolder for the plugin itself
+        br
+        ol
+          li(value='3')
+            b Also in the root of my (VVV) working directory, I have:
+        ul
+          li  An instance of wordpress (for manual testing) - "wordpress-default". I create a symlink to my plugin for this environment.
+          li  The wp dev env "wordpress-develop".
+
+       section
+        h2 Config files
+        h3 phpunit.xml
+        p This is the file that PHPUnit loads first.
+        pre.small-text
+          code.language-markup.
+            &lt;phpunit
+                    bootstrap=&quot;bootstrap.php&quot;
+                    backupGlobals=&quot;false&quot;
+                    colors=&quot;true&quot;
+                    convertErrorsToExceptions=&quot;true&quot;
+                    convertNoticesToExceptions=&quot;true&quot;
+                    convertWarningsToExceptions=&quot;true&quot;
+                    &gt;
+                &lt;testsuites&gt;
+                    &lt;testsuite&gt;
+                        &lt;directory prefix=&quot;test-&quot; suffix=&quot;.php&quot;&gt;./&lt;/directory&gt;
+                    &lt;/testsuite&gt;
+                &lt;/testsuites&gt;
+            &lt;/phpunit&gt;
+
+       section
+        h2 Config files
+        h3 bootstrap.php
+        p This is the file that sets up the Wordpress Test Environment
+        pre.small-text
+          code.language-javascript.
+            &lt;?php
+            // The path to the WordPress tests checkout.
+            define( 'WP_TESTS_DIR', '/srv/www/wordpress-develop/tests/phpunit/' );
+            // The path to the main file of the plugin to test.
+            define( 'TEST_PLUGIN_FILE', '/srv/www/myplugin-repo/myplugin/myplugin.php' );
+            // Load the The WordPress suite
+             require_once WP_TESTS_DIR . 'includes/functions.php';
+            // Manually load the plugin main file.
+            function _manually_load_plugin() {
+              require TEST_PLUGIN_FILE;
+            }
+            tests_add_filter( 'muplugins_loaded', '_manually_load_plugin' );
+            // Commence our tests
+            require WP_TESTS_DIR . 'includes/bootstrap.php';
+
 
     footer
-        a(href='http://twitter.com/jackbarker')
+        a(href='http://twitter.com/jackbarker' target='_blank')
           span  @jackbarker
-        a(href='http://twitter.com/jackbarker')
+        a(href='http://twitter.com/jackbarker' target='_blank')
           i(class='fa fa-twitter fa-lg')
-        a(href='http://github.com/jibbius') 
+        a(href='http://github.com/jibbius' target='_blank') 
           i(class='fa fa-github fa-lg')
-        a(href='http://wherethetruck.at/jackb') 
+        a(href='http://wherethetruck.at/jackb' target='_blank') 
           i(class='fa fa-globe fa-lg')
 
     script(src='build/build.js')
