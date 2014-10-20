@@ -30,18 +30,18 @@ html
 
       section
         h2 A Test is:
-        ul
-          li An <b>Instruction</b> with an <b>Expected Outcome</b>, that shall be compared against an <b>Actual Outcome</b>.
+        ul.no-bull
+          li.bull An <b>Instruction</b> with an <b>Expected Outcome</b>, that shall be compared against an <b>Actual Outcome</b>.
           li IF (Expected == Actual), the test shall <b>PASS</b>.
           li IF (Expected <> Actual), the test shall <b>FAIL</b>.
-          li A test must be <b>repeatable</b>.
-          li Where possible, each test should focus on a single item of functionality.
+          li.bull A test must be <b>repeatable</b>.
+          li.bull Where possible, each test should focus on a single item of functionality.
 
       section
         h2 What a test looks like:
         p In Selenium IDE (which we'll explore shortly), a test might look like this:
 
-        table(class='selenium')
+        table(class='striped')
           colgroup
             col(width="20%")
             col(width="30%")
@@ -74,7 +74,7 @@ html
 
       section
         h2 Your website/product's automated test suite should:
-        ul
+        ul.bull
           li Provide a good description of the functionality your system is intends to deliver.
           li Alert you if you break something.
           li Assist you in checking whether you have fixed something.
@@ -89,7 +89,7 @@ html
       section
         h2 Selenium IDE
         h3 (What <b>IS</b> it?)
-        ul
+        ul.bull
           li It is a <b>Browser Automation Tool</b>.
           li Installed as a Firefox Browser Plugin.
           li Alternatively: Chrome, Safari, IE, Opera (note: these versions are built/maintained by 3rd parties).
@@ -97,7 +97,7 @@ html
       section
         h2 Selenium IDE
         h3 (What does it <b>DO</b>?)
-        ul
+        ul.bull
           li Allows you to <b>record</b> or <b>write</b> scripts, and then <b>replay</b> the script in the browser.
           li Because it's browser based, you can record/replay on any website.
           li It includes a testing framework.
@@ -133,10 +133,10 @@ html
         h3 Test 1
         p
           b  Instruction:
-          span  Select a city from the MapPicker
+          |  Select a city from the MapPicker
         p
           b  Expected behaviour:
-          span  The map should be updated, to reflect the city you have selected.
+          |  The map should be updated, to reflect the city you have selected.
 
       section
         h2 (Insert video)
@@ -193,10 +193,11 @@ html
         h3 Test 2
         p
           b  Instruction:
-          span  Reload the page
+          |  Reload the page
         p
           b  Expected behaviour:
-          span  The page should "remember" which city you were viewing earlier, and display the same city
+          |  The page should "remember" which city you were viewing earlier,
+          |  and display the same city.
 
       section
         h2 (Insert video)
@@ -209,25 +210,29 @@ html
           li That said, it does have some limitations.
         p
         ol
-          li Is your UI likely to undergo changes? If so, rework to your testing will likely be significant.
-          li How complex are the items you are seeking to test? In some cases you may be limited in what the tool allows you to do (e.g. Test that "on Tuesdays, a different banner is displayed")
-          li Some testing simply needs to be done manually
+          li Is your UI likely to undergo changes?
+            |  If so, rework to your testing will likely be significant.
+          li How complex are the items you are seeking to test?
+            |  In some cases you may be limited in what the tool allows you to do
+            |  (e.g. Test that "on Tuesdays, a different banner is displayed")
+          li Some testing simply needs to be done manually.
 
       section
         h2 Limitations of Selenium IDE  
         ol        
-          li(value='4') Great for testing something that already works (but not a great option for <abbr title="Test Driven Development">TDD</abbr>).
+          li(value='4') Great for testing something that already works
+            |  (but not a great option for <abbr title="Test Driven Development">TDD</abbr>).
           li Selenium's developers cite:
-            blockquote(cite='http://seleniumhq.org') "Selenium IDE is simply intended as a <b>rapid prototyping tool</b>... <br /> ...for serious, robust test automation use either Selenium 2 or Selenium 1." -- SeleniumHQ.org
-          li Whilst highly flexible, and easy for beginners, there are more precise tools (targetted at developers) that may provide a more reliable solution. Speaking of which...
+            blockquote(cite='http://seleniumhq.org')
+              p  "Selenium IDE is simply intended as a <b>rapid prototyping tool</b>...
+              p  For serious, robust test automation use either Selenium 2 or Selenium 1."
+              p  -- SeleniumHQ.org
+          li Whilst highly flexible, and easy for beginners, there are more precise tools (targetted at developers) that may provide a more reliable solution...
+          li.no-num Speaking of which... enter:
 
       section
-        p Enter:
         h2 PHPUnit
         h3 The PHP Testing Framework
-
-      section
-        h2 PHPUnit
 
       section
         h2 Installing PHPUnit
@@ -235,12 +240,12 @@ html
           li Instalation of PHPUnit via PEAR is <b>no longer supported</b>.
           li Instead install via
             a(title='PHP Archive' href='https://phpunit.de/manual/current/en/installation.html#installation.phar')  PHAR
-            span , or via
+            | , or via
             a(title='PHP Composer' href='https://phpunit.de/manual/current/en/installation.html#installation.composer')  Composer
-            span .
+            | .
           li Or (my preferred) check out:
             a(title='Varying Vagrant Vagrants' href='https://github.com/Varying-Vagrant-Vagrants/VVV')  VVV
-            span .
+            | .
           li
             em VVV is a Vagrant build, run inside VirtualBox.
 
@@ -251,10 +256,21 @@ html
           code.language-markup.
            $ phpunit
         ul
-          li Note: When you run PHPUnit, there is <b>no webserver</b>.
-          li Note: <u>When you run PHPUnit, there is <b>no webserver</b></u>.
-          li Note:
-            span.uppercase  <u>When you run PHPUnit, <br/> there is <b>no webserver</b></u>.
+          li Note: When you run PHPUnit,
+            b  there is no webserver.
+          li Note: When you run PHPUnit,
+            b
+              u  there is no webserver.
+          li Note: When you run PHPUnit,
+            b
+              u
+                span.uppercase there is no webserver!!!
+          li
+            em  For this reason, in addition to your PHPUnit environment, you will also need an environment for manual (web browser) testing.
+          li
+            em  These environments can "share" plugin code - as I'll demonstrate shortly.
+          li
+            em  These environments should use different databases.
 
       section
         h2 Sample Output:
@@ -285,31 +301,38 @@ html
         h2 Coding for PHPUnit
         ul
           li PHPUnit declares the <b>PHPUnit_Framework_TestCase</b> class.
-          li Wordpress's testing framework declares the <b>WP_UnitTestCase</b> class (which extends PHPUnit_Framework_TestCase).
-          li When writing tests for your Wordpress plugins, you will <b>extend WP_UnitTestCase</b>, with <b>your own unique class/es</b>.
+          li Wordpress's testing framework declares the
+            b  WP_UnitTestCase
+            |  class (which extends PHPUnit_Framework_TestCase).
+          li When writing tests for your Wordpress plugins, you will
+            b  extend WP_UnitTestCase
+            |, with
+            b  your own unique class/es
+            | .
           li
             pre
               code.language-javascript.
                 &lt;?php
                   class MyPlugin_Test extends WP_UnitTestCase {
                     // Write your test logic here...
+          li But - let's not get ahead of ourselves, we'll explore WP_UnitTestCase after first examining PHPUnit.
 
       section
-        h2 What about PHPUnit?
-        h3 PHPUnit_Framework_TestCases
+        h2 What do we get from PHPUnit?
+        h3 Class: PHPUnit_Framework_TestCase
         ul
           li PHPUnit_Framework_TestCase provides you with a number of
             a(href='https://phpunit.de/manual/current/en/appendixes.assertions.html' target='_blank')  Assertion
             span  functions.
           li
             b  These functions include:
-            span.
-              <br/> assertEquals($expected, $actual);
-              <br/> assertTrue();
-              <br/> assertFalse();
-              <br/> assertArrayHasKey();
-              <br/> assertEmpty();
-              <br/> assertFileExists();
+            | .
+            | <br/> assertEquals($expected, $actual);
+            | <br/> assertTrue();
+            | <br/> assertFalse();
+            | <br/> assertArrayHasKey();
+            | <br/> assertEmpty();
+            | <br/> assertFileExists();
           li (and more)
 
        section
@@ -320,7 +343,7 @@ html
             pre
               code.language-javascript.
                 &lt;?php
-                  class MyPlugin_Test extends WP_UnitTestCase {
+                  class My_Test extends WP_UnitTestCase {
                     // Perform some logic
                     $value = 1 + 1;
                     // We expect the $value to equal '2'.
@@ -331,28 +354,58 @@ html
       section
         h2 What about WP_UnitTestCase?
         ul
-          li  For testing of WordPress plugins/themes/core, you must download the Wordpress Developer Environment ( <a href='http://develop.svn.wordpress.org/trunk/' target='_blank'>http://develop.svn.wordpress.org/trunk/</a> ).
+          li  For testing of WordPress plugins/themes/core, you must download the Wordpress Developer Environment: <br />
+            a(href='http://develop.svn.wordpress.org/trunk/' target='_blank')  http://develop.svn.wordpress.org/trunk/
           li  This includes the WP_UnitTestCase class, in addition to the WordPress Core tasks, and WordPress development build.
-          li  If you're using VVV, then you will already have the Wordpress Developer Environment and PHPUnit.
+          li  The Wordpress Developer Environment also requires <b>a database</b>, and <b>some minor configuration</b>. I do not cover this topic in within these slides.
+          li  If you're using
+              a(title='Varying Vagrant Vagrants' href='https://github.com/Varying-Vagrant-Vagrants/VVV')  VVV
+              | , then: the Wordpress Developer Environment, all necessary databases, and PHPUnit - will already be installed (and correctly configured) by default.
 
       section
         h2 What do I inherit from WP_UnitTestCase?
-        h3 I will explained these items further in my next slides:
+        h3 I will explain these items further in my next slides:
         ul
           li
-            b Factories
-          li <b>setUp()</b> and <b>tearDown()</b> functions
+            b  Object factories
+            |  (Post / User / ...etc)
+          li
+            b  setUp()
+            |  and
+            b  tearDown()
+            |  functions
 
       section
-        h2 Factories
+        h2 Object Factories
         ul
           li  WP_UnitTestCase provides you with a number of "factories"
           li  These factories allow you to create new Posts / Comments / Users / ...etc, with a minimal amount of code.
+          li
+            pre
+              code.language-javascript.
+                  // Create a post, return the id.
+                  $post_id = $this-&gt;factory-&gt;post-&gt;create();
+
+                  // Create 10 users, return array of ids.
+                  $user_ids = $this-&gt;factory-&gt;user-&gt;create_many( 10 );
+          li  The factory property allows you to create the following:
+            table.mock
+              tr
+                td  post
+                td  attachment
+                td  comment
+                td  user
+              tr
+                td  term
+                td  category
+                td  tag
+                td  blog
 
        section
         h2 WP_UnitTestCase functions
+        h3 test
         ul
-          li
+          li Do some
             b setUp()
           li  This function is...
           li
@@ -362,10 +415,15 @@ html
       section
         h2 "Gotchas"
         h3 Just some things to watch out for -
-        ul
-          li When you run PHPUnit, there is <b>no webserver</b>
-          li <b>PHP caching</b> <br /> There are functions in PHP that explicity cache data. If you use [xyz] in a test. Make sure you [abc] in your tearDown(), or at the end of your test.
-          li <b>Database</b>. The database attached to WP Developer Environment (i.e. specified in wp-devel/wp-config.php), will be "nuked" every time you run 'phpunit'. Be careful.
+        ul.bull
+          li
+            b  No webserver when running PHPUNIT
+          li
+            b  PHP caching
+            |  <br />There are functions in PHP that explicity cache data. If you use [xyz] in a test. Make sure you [abc] in your tearDown(), or at the end of your test.
+          li
+            b  Databases
+            |  The database attached to WP Developer Environment (i.e. specified in wp-devel/wp-config.php), will be "nuked" every time you run 'phpunit'. Be careful.
 
       section
         h2 Tying it all together
@@ -378,67 +436,66 @@ html
           img(alt='Directory Structure' src='images/PHP_dir_structure.jpg')
 
       section
-        ol
+        ul.bull
           li
-            b In the root of my (VVV) working directory, I have:
-        ul
-          li  The git repo for ALL my plugin's files
-        br
-        ol
-          li(value='2')
-            b This repo/folder has:
-        ul
-          li a subfolder for my tests
-          li a subfolder for the plugin itself
-        br
-        ol
-          li(value='3')
-            b Also in the root of my (VVV) working directory, I have:
-        ul
-          li  An instance of wordpress (for manual testing) - "wordpress-default". I create a symlink to my plugin for this environment.
-          li  The wp dev env "wordpress-develop".
+            b In the root of my (VVV) working directory [www], I have:
+          li.no-bull  [www / wordpress-develop] The Wordpress Developer Environment.
+          li.no-bull  [www / wordpress-default] An instance of wordpress (for manual testing).
+          li.no-bull  [www / myplugin-repo] The git repo for ALL my plugin's files.
+          li
+            b The git repo / folder has:
+          li.no-bull  [www / myplugin-repo / myplugin] a subfolder for the plugin itself
+          li.no-bull  [www / myplugin-repo / myplugin-tests] a subfolder for my tests
+          li
+            b To ensure that myplugin's code is accessible in the manual environment:
+          li  I create a symlink to my plugin for this environment.
 
-       section
+      section
         h2 Config files
         h3 phpunit.xml
         p This is the file that PHPUnit loads first.
         pre.small-text
-          code.language-markup.
-            &lt;phpunit
-                    bootstrap=&quot;bootstrap.php&quot;
-                    backupGlobals=&quot;false&quot;
-                    colors=&quot;true&quot;
-                    convertErrorsToExceptions=&quot;true&quot;
-                    convertNoticesToExceptions=&quot;true&quot;
-                    convertWarningsToExceptions=&quot;true&quot;
-                    &gt;
-                &lt;testsuites&gt;
-                    &lt;testsuite&gt;
-                        &lt;directory prefix=&quot;test-&quot; suffix=&quot;.php&quot;&gt;./&lt;/directory&gt;
-                    &lt;/testsuite&gt;
-                &lt;/testsuites&gt;
-            &lt;/phpunit&gt;
+          code.language-markup
+            | &lt;phpunit
+            |       bootstrap=&quot;bootstrap.php&quot;
+            |       backupGlobals=&quot;false&quot;
+            |       colors=&quot;true&quot;
+            |       convertErrorsToExceptions=&quot;true&quot;
+            |       convertNoticesToExceptions=&quot;true&quot;
+            |       convertWarningsToExceptions=&quot;true&quot;&gt;
+            |       &lt;testsuites&gt;
+            |           &lt;testsuite&gt;
+            |               &lt;directory prefix=&quot;test-&quot; suffix=&quot;.php&quot;&gt;./&lt;/directory&gt;
+            |           &lt;/testsuite&gt;
+            |       &lt;/testsuites&gt;
+            |   &lt;/phpunit&gt;
+        p.info  Location: <br /> [ www / myplugin-repo / myplugin-tests / phpunit.xml ]
 
-       section
+      section
         h2 Config files
         h3 bootstrap.php
         p This is the file that sets up the Wordpress Test Environment
         pre.small-text
-          code.language-javascript.
-            &lt;?php
-            // The path to the WordPress tests checkout.
-            define( 'WP_TESTS_DIR', '/srv/www/wordpress-develop/tests/phpunit/' );
-            // The path to the main file of the plugin to test.
-            define( 'TEST_PLUGIN_FILE', '/srv/www/myplugin-repo/myplugin/myplugin.php' );
-            // Load the The WordPress suite
-             require_once WP_TESTS_DIR . 'includes/functions.php';
-            // Manually load the plugin main file.
-            function _manually_load_plugin() {
-              require TEST_PLUGIN_FILE;
-            }
-            tests_add_filter( 'muplugins_loaded', '_manually_load_plugin' );
-            // Commence our tests
-            require WP_TESTS_DIR . 'includes/bootstrap.php';
+          code.language-javascript
+            |&lt;?php
+            |     // The path to the WordPress tests checkout.
+            |     define( 'WP_TESTS_DIR', '/srv/www/wordpress-develop/tests/phpunit/' );
+            |     <br/>
+            |     // The path to the main file of the plugin to test.
+            |     define( 'TEST_PLUGIN_FILE', '/srv/www/myplugin-repo/myplugin/myplugin.php' );
+            |     <br/>
+            |     // Load the The WordPress suite
+            |      require_once WP_TESTS_DIR . 'includes/functions.php';
+            |     <br/>
+            |     // Manually load the plugin main file.
+            |     function _manually_load_plugin() {
+            |       require TEST_PLUGIN_FILE;
+            |     }
+            |     tests_add_filter( 'muplugins_loaded', '_manually_load_plugin' );
+            |     <br/>
+            |     // Commence our tests
+            |     require WP_TESTS_DIR . 'includes/bootstrap.php';
+        p.info  Location: <br /> [ www / myplugin-repo / myplugin-tests / bootstrap.php ]
 
 
     footer

@@ -11,6 +11,9 @@
 h1, h2 {
 	color: #000;
 }
+p{
+    margin: 0 12px 12px;
+}
 .bespoke-parent{
 	background: #000;	
 }
@@ -33,6 +36,7 @@ pre {
 pre[class*="language-"].small-text, pre[class*="language-"].small-text>code {
 	font-size:.7em;
 	line-height: 0.7 !important;
+    padding: 1em !important;
 }
 .img_wrapper{
     max-width: 100%;
@@ -59,18 +63,33 @@ abbr[title] {
 }
 table {
 	font-size: .7em;
+    width: 100%;
 }
-table tr:nth-child(even) td {
+table.plain td {
+    border: 2px solid;
+    padding: 4px;
+    text-align: center;
+    margin: 0;
+    font-size: 1.1em;
+}
+table.mock td {
+    padding: 1px;
+    text-align: center;
+    margin: 0;
+    font-weight: bold;
+    font-size: 1.8em;
+}
+table.striped tr:nth-child(even) td {
     background-color: #eee;
 }
-table tr:nth-child(odd) td {
+table.striped tr:nth-child(odd) td {
     background-color: #fff;
 }
-table th {
+table.striped th {
     color: white;
     background-color: black;
 }
-table tr th.no-fill, table tr td.no-fill {
+table.striped tr th.no-fill, table.striped tr td.no-fill {
     background: none !important;
     color: #236BE6 !important;
     font-size: .8em;
@@ -80,4 +99,160 @@ table tr th.no-fill, table tr td.no-fill {
 }
 .uppercase{
     text-transform: uppercase;
+}
+ul{
+    margin-left: 0;
+}
+ol {
+    margin-left: 28px;
+}
+ul, ol{
+    margin-right: auto;
+    text-align:left;
+}
+ul.no-bull, li.no-bull{
+    list-style:none;
+}
+ul.bull, li.bull{
+    list-style:initial;
+}
+/* blockquote */
+blockquote {
+  background: #f9f9f9;
+  margin: 1.5em 10px;
+  padding: 0.5em 10px;
+  quotes: "\201C""\201D""\2018""\2019";
+}
+blockquote:before {
+  color: #ccc;
+  content: open-quote;
+  font-size: 4em;
+  line-height: 0.1em;
+  margin-right: 0.25em;
+  vertical-align: -0.4em;
+}
+blockquote p {
+  margin: 0;
+}
+
+/*
+ * CSS3 Treeview. No JavaScript
+ * @version 1.0
+ * @author Martin Ivanov
+ * @url developer's website: http://wemakesites.net/
+ * @url developer's twitter: https://twitter.com/#!/wemakesitesnet
+ * @url developer's blog http://acidmartin.wordpress.com/
+ **/
+ 
+/*
+ * This solution works with all modern browsers and Internet Explorer 9+. 
+ * If you are interested in purchasing a JavaScript enabler for IE8 
+ * for the CSS3 Treeview, please, check this link:
+ * http://experiments.wemakesites.net/miscellaneous/acidjs-css3-treeview/
+ **/
+ 
+.css-treeview ul,
+.css-treeview li
+{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+ 
+.css-treeview input
+{
+    position: absolute;
+    opacity: 0;
+}
+ 
+.css-treeview
+{
+    font: normal 11px "Segoe UI", Arial, Sans-serif;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+ 
+.css-treeview a
+{
+    color: #00f;
+    text-decoration: none;
+}
+ 
+.css-treeview a:hover
+{
+    text-decoration: underline;
+}
+ 
+.css-treeview input + label + ul
+{
+    margin: 0 0 0 22px;
+}
+ 
+.css-treeview input ~ ul
+{
+    display: none;
+}
+ 
+.css-treeview label,
+.css-treeview label::before
+{
+    cursor: pointer;
+}
+ 
+.css-treeview input:disabled + label
+{
+    cursor: default;
+    opacity: .6;
+}
+ 
+.css-treeview input:checked:not(:disabled) ~ ul
+{
+    display: block;
+}
+ 
+.css-treeview label,
+.css-treeview label::before
+{
+    background: url("../pages/css3-treeview/example/icons.png") no-repeat;
+}
+ 
+.css-treeview label,
+.css-treeview a,
+.css-treeview label::before
+{
+    display: inline-block;
+    height: 16px;
+    line-height: 16px;
+    vertical-align: middle;
+}
+ 
+.css-treeview label
+{
+    background-position: 18px 0;
+}
+ 
+.css-treeview label::before
+{
+    content: "";
+    width: 16px;
+    margin: 0 22px 0 0;
+    vertical-align: middle;
+    background-position: 0 -32px;
+}
+ 
+.css-treeview input:checked + label::before
+{
+    background-position: 0 -16px;
+}
+p.info {
+    background: rgb(255, 255, 187);
+    padding: 6px 12px;
+    font-size: .7em;
+    border-radius: 4px;
+    border: solid 2px rgb(255, 255, 111);
+    text-align: left;
+    margin-top 6px;
+    margin-bottom: 2px;
+    line-height:1.2;
 }
