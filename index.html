@@ -13,6 +13,7 @@
         <h1>Testing for Websites and Plugins</h1>
         <h2><a href="http://twitter.com/jackbarker" target="_blank">@jackbarker</a></h2>
         <h3>Presented @ #WPMelb (October 2014)</h3>
+        <p>To advance to the next slide use the arrow keys (or swipe left/right on touch devices).</p>
       </section>
       <section>
         <h2>Agenda</h2>
@@ -334,9 +335,9 @@ Tests: 10, Assertions: 18, Failures: 2.
         <h2>What about WP_UnitTestCase?</h2>
         <ul>
           <li> For testing of WordPress plugins/themes/core, you must download the Wordpress Developer Environment: <br /><a href="http://develop.svn.wordpress.org/trunk/" target="_blank"> http://develop.svn.wordpress.org/trunk/</a></li>
-          <li> This includes the WP_UnitTestCase class, in addition to the WordPress Core tasks, and WordPress development build.</li>
+          <li> This includes the WP_UnitTestCase class, in addition to the WordPress Core tasks, and the WordPress development build.</li>
           <li> The Wordpress Developer Environment also requires <b>a database</b>, and <b>some minor configuration</b>. I do not cover this topic in within these slides.</li>
-          <li> If you're using<a title="Varying Vagrant Vagrants" href="https://github.com/Varying-Vagrant-Vagrants/VVV"> VVV</a>, then: the Wordpress Developer Environment, all necessary databases, and PHPUnit - will already be installed (and correctly configured) by default.</li>
+          <li> But - if you're using<a title="Varying Vagrant Vagrants" href="https://github.com/Varying-Vagrant-Vagrants/VVV"> VVV</a>, then: the Wordpress Developer Environment, all necessary databases, and PHPUnit - will already be installed (and correctly configured) by default.</li>
         </ul>
       </section>
       <section>
@@ -494,7 +495,7 @@ $user_ids = $this-&gt;factory-&gt;user-&gt;create_many( 10 );</code></pre>
         <h3>Just some things to watch out for -</h3>
         <ul class="bull">
           <li><b> No webserver when running PHPUNIT</b></li>
-          <li><b> PHP caching</b> <br />There are functions in PHP that explicity cache data. If you use [xyz] in a test. Make sure you [abc] in your tearDown(), or at the end of your test.</li>
+          <li><b> PHP caching</b> <br />There are functions in PHP that explicity cache data. If you use any custom caching in your plugins (or your dependencies) - then you should clear these caches in your tearDown().</li>
           <li><b> Databases</b> <br />The database attached to WP Developer Environment (i.e. specified in wp-devel/wp-config.php), will be "nuked" every time you run 'phpunit'. Be careful.</li>
         </ul>
       </section>
