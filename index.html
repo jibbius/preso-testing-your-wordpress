@@ -461,7 +461,7 @@ $user_ids = $this-&gt;factory-&gt;user-&gt;create_many( 10 );</code></pre>
       <section>
         <h2>Test Files</h2>
         <h3>test-<b>[whatever]</b>.php</h3>
-        <p>Based on the configuration I've described, </p>
+        <p>Based on the configuration I've described, all PHP files in the myplugin-tests directory begining with "test-" shall be treated as tests for the purpose of exceuting phpunit from the command line.</p>
         <pre class="small-text"><code class="language-javascript">&lt;?php
     class MyPlugin_TestComponentOne extends WP_UnitTestCase {
       private $myplugin;
