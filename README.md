@@ -1,5 +1,10 @@
-# Testing Your Wordpress
-> A [Bespoke.js](http://markdalgleish.com/projects/bespoke.js) presentation, built with [generator-bespoke](https://github.com/markdalgleish/generator-bespoke)
+# Testing for Websites and Plugins
+## A presentation on: Selenium IDE, PHPUnit, and Wordpress Development
+View the presentation [here](http://jibbius.github.io/testing-your-wordpress)
+
+## About the source code
+
+I built this slide deck, using [Bespoke.js](http://markdalgleish.com/projects/bespoke.js) and [generator-bespoke](https://github.com/markdalgleish/generator-bespoke)
 
 ## View slides locally
 
