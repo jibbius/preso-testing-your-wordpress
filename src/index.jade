@@ -19,8 +19,8 @@ html
         h3 Presented @ #WPMelb (October 2014)
 
       section
-        h2.bullet Agenda
-        ul
+        h2 Agenda
+        ul.bull
           li Testing 101 (What / Why)
           li Testing for <b>Beginners</b> with Selenium (Browser Automation)
           li Testing for <b>Developers</b> with PHPUnit and WP Testing Framework
@@ -139,7 +139,10 @@ html
           |  The map should be updated, to reflect the city you have selected.
 
       section
-        h2 (Insert video)
+        h2 (Video coming soon)
+        p
+          b Source code:
+          a(href='https://github.com/jibbius/testing-your-wordpress/blob/master/worked-examples/selenium_WhereTheTruckAt/WhereTheTruckAt_MapPicker_part1' target='_blank') Test 1
 
       section
         div(class='img_wrapper')
@@ -200,7 +203,10 @@ html
           |  and display the same city.
 
       section
-        h2 (Insert video)
+        h2 (Video coming soon)
+        p
+          b Source code:
+          a(href='https://github.com/jibbius/testing-your-wordpress/blob/master/worked-examples/selenium_WhereTheTruckAt/WhereTheTruckAt_MapPicker_part2' target='_blank') Test 2
 
       section
         h2 Limitations of Selenium IDE
@@ -337,17 +343,20 @@ html
 
        section
         h2 Example Use
-        h3 PHPUnit_Framework_TestCase Assertions
+        p PHPUnit_Framework_TestCase Assertions
         ul
           li
             pre
               code.language-javascript.
-                &lt;?php
                   class My_Test extends WP_UnitTestCase {
                     // Perform some logic
                     $value = 1 + 1;
                     // We expect the $value to equal '2'.
                     $this->assertEquals(2, $value);
+                    // A single test case may include many assertions
+                    $this->assertContains('tina',
+                        array('tina', 'bill', 'tim', 'samantha')
+                    );
           li Additional documentation:
             a(href='https://phpunit.de/manual/current/en/appendixes.assertions.html' target='_blank')  PHPUnit Manual &gt; Assertions
 
@@ -371,9 +380,10 @@ html
             |  (Post / User / ...etc)
           li
             b  setUp()
-            |  and
+            |  function
+          li
             b  tearDown()
-            |  functions
+            |  function
 
       section
         h2 Object Factories
@@ -403,31 +413,22 @@ html
 
        section
         h2 WP_UnitTestCase functions
-        h3 test
+        p The following functions are called immediatedly before (setUp) / after (tearDown) a test has been executed:
         ul
-          li Do some
-            b setUp()
-          li  This function is...
           li
-            b tearDown()
-          li  This function is...
+            b  setUp()
+            |  <br/> Before a test case is run, the template method called setUp() is invoked.
+            |  <br/> SetUp() is where you create the objects against which you will test.
+            |  <br/> This method is declared in PHPUnit_Framework_TestCase, and extended in WP_UnitTestCase.
+          li
+            b  tearDown()
+            |  <br/> As above, with the difference that this method is called after the test.
+            |  <br/> You may choose to use this method to flush caches / ...etc, if applicable.
+
 
       section
-        h2 "Gotchas"
-        h3 Just some things to watch out for -
-        ul.bull
-          li
-            b  No webserver when running PHPUNIT
-          li
-            b  PHP caching
-            |  <br />There are functions in PHP that explicity cache data. If you use [xyz] in a test. Make sure you [abc] in your tearDown(), or at the end of your test.
-          li
-            b  Databases
-            |  The database attached to WP Developer Environment (i.e. specified in wp-devel/wp-config.php), will be "nuked" every time you run 'phpunit'. Be careful.
-
-      section
-        h2 Tying it all together
-        h3 Building your first plugin, using PHPUnit and TDD.
+        h2 Setting up your development workspace
+        h3 for PHPUnit and Wordpress Plugin Development
         
       section
         span
@@ -444,11 +445,16 @@ html
           li.no-bull  [www / myplugin-repo] The git repo for ALL my plugin's files.
           li
             b The git repo / folder has:
-          li.no-bull  [www / myplugin-repo / myplugin] a subfolder for the plugin itself
-          li.no-bull  [www / myplugin-repo / myplugin-tests] a subfolder for my tests
+          li.no-bull  [www / myplugin-repo / myplugin] a subfolder for the plugin itself.
+          li.no-bull  [www / myplugin-repo / myplugin-tests] a subfolder for my tests.
           li
             b To ensure that myplugin's code is accessible in the manual environment:
-          li  I create a symlink to my plugin for this environment.
+          li.no-bull   I create a symlink to my plugin for this environment:
+            pre.small-text
+              code.language-markup
+                | <br/>
+                |  $ cd www/wordpress-default/wp-content/plugins
+                |  $ ln -s ../../myplugin-repo/myplugin .
 
       section
         h2 Config files
@@ -497,6 +503,57 @@ html
             |     require WP_TESTS_DIR . 'includes/bootstrap.php';
         p.info  Location: <br /> [ www / myplugin-repo / myplugin-tests / bootstrap.php ]
 
+      section
+        h2 Test Files
+        h3 test-
+          b [whatever]
+          | .php
+        p Based on the configuration I've described, 
+        pre.small-text
+          code.language-javascript
+            |&lt;?php
+            |     class MyPlugin_TestComponentOne extends WP_UnitTestCase {
+            |       private $myplugin;
+            |     
+            |       public function setUp() {
+            |         parent::setUp(); // Perform inherited setUp tasks.
+            |         $this-&gt;myplugin = new MyPlugin; // Get an instance of our plugin.
+            |       }
+            |     
+            |       public function myPluginTest1() {
+            |         // insert test logic
+            |         assertTrue( $myplugin-&gt;do_some_plugin_stuff() );
+            |       }
+            |     
+            |     
+            |       public function tearDown() {
+            |         parent::tearDown(); // Perform any inherited tearDown tasks.
+            |       }
+            |     
+            |     }
+        p.info  Location: <br /> [ www / myplugin-repo / myplugin-tests / test-*.php ]
+
+      section
+        h2 Tying it all together
+        h3 Building your first plugin, using PHPUnit and TDD.
+        p.info THIS SECTION IS COMING SOON!
+
+      section
+        h2 Conclusion + "Gotchas"
+        h3 Just some things to watch out for -
+        ul.bull
+          li
+            b  No webserver when running PHPUNIT
+          li
+            b  PHP caching
+            |  <br />There are functions in PHP that explicity cache data. If you use [xyz] in a test. Make sure you [abc] in your tearDown(), or at the end of your test.
+          li
+            b  Databases
+            |  <br />The database attached to WP Developer Environment (i.e. specified in wp-devel/wp-config.php), will be "nuked" every time you run 'phpunit'. Be careful.
+
+      section
+        h2 That's all
+        h3 Thanks for stopping by :)
 
     footer
         a(href='http://twitter.com/jackbarker' target='_blank')
