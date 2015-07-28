@@ -1,6 +1,6 @@
 # Testing for Websites and Plugins
 ## A presentation on: Selenium IDE, PHPUnit, and Wordpress Development
-View the presentation [here](http://jibbius.github.io/testing-your-wordpress)
+View the presentation [here](http://jibbius.github.io/preso-testing-your-wordpress)
 
 ## About the source code
 
